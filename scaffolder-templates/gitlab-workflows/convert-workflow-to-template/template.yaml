@@ -33,7 +33,7 @@ spec:
           ui:field: RepoUrlPicker
           ui:options:
             allowedHosts:
-              - gitlab.com
+              - gitlab.cee.redhat.com
         pluginLocation:
           type: string
           title: Where to publish this new plugin?
@@ -91,9 +91,9 @@ spec:
     - id: publishGitlabProject
       name: Publish the template in a new GitLab project
       action: publish:gitlab
-      if: ${{ (parameters.repoUrl | parseRepoUrl).host === 'gitlab.com' and parameters.pluginLocation === 'Create a new project within the specified organization' }}
+      if: ${{ (parameters.repoUrl | parseRepoUrl).host === 'gitlab.cee.redhat.com' and parameters.pluginLocation === 'Create a new project within the specified organization' }}
       input:
-        allowedHosts: ['gitlab.com']
+        allowedHosts: ['gitlab.cee.redhat.com']
         description: This is the template for the ${{ parameters.workflow_id }} workflow.
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: main
@@ -102,9 +102,9 @@ spec:
     - id: publishGitlabPR
       name: Create GitLab merge request with the template
       action: publish:gitlab:merge-request
-      if: ${{ (parameters.repoUrl | parseRepoUrl).host === 'gitlab.com' and parameters.pluginLocation === 'Submit a pull request to the same project' }}
+      if: ${{ (parameters.repoUrl | parseRepoUrl).host === 'gitlab.cee.redhat.com' and parameters.pluginLocation === 'Submit a pull request to the same project' }}
       input:
-        allowedHosts: ['gitlab.com']
+        allowedHosts: ['gitlab.cee.redhat.com']
         repoUrl: ${{ parameters.repoUrl }}
         branchName: ${{ parameters.branchName }}
         targetBranchName: ${{ parameters.targetBranchName }}
